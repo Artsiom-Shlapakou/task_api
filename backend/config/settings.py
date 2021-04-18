@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework',
     'rest_framework_simplejwt',
+    #custom apps
+    'users',
 ]
 
 REST_FRAMEWORK = {
