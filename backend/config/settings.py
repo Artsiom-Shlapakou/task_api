@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     #custom apps
     'users',
+    'quiz'
 ]
 
 REST_FRAMEWORK = {
