@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from quiz.models import Quiz, Question, Answer, Category
+from quiz.models import (Quiz, Question, 
+                        Answer, Category, QuizResult)
+from users.serializers import UserSerializer
+                        
 
 class CategorySerializer(serializers.ModelSerializer):
  
@@ -10,6 +13,7 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 class QuizSerializer(serializers.ModelSerializer):
+    
     category = CategorySerializer()
     class Meta:
         model = Quiz
@@ -52,3 +56,25 @@ class QuestionSerializer(serializers.ModelSerializer):
             'title',
             'answer',
         ]
+
+class QuizResultSerializer(serializers.ModelSerializer):
+   
+    user = UserSerializer(read_only=True)
+    quiz = QuizSerializer(read_only=True)
+
+    class Meta:
+        model = QuizResult
+        fields = [
+            'user',
+            'quiz',
+            'start_date',
+            'finish_date',
+            'right_answers',
+            'wrong_answers',
+            'mark'
+        ]
+        read_only_fields = (
+            'right_answers',
+            'wrong_answers',
+            'mark'
+        )
