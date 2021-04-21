@@ -7,6 +7,6 @@ router = DefaultRouter()
 #router.register(r'users', UserViewSet)
 router.register(r'users/signup/', CreateUserViewSet)
 
-user_patterns = [
+urlpatterns = [
     path('', include(router.urls)),
 ]
