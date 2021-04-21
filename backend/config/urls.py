@@ -18,7 +18,8 @@ from django.urls import path, include
 from users.urls import user_patterns
 
 apipatterns = [
-    path('', include(user_patterns)),
+    path('', include('users.urls')),
+    path('', include('quiz.urls'))
 ]
 
 urlpatterns = [
