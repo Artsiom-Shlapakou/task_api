@@ -39,15 +39,31 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'djoser',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
     #custom apps
+    'authentication',
     'users',
+    'quiz'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
+    'DEFAULT_PERMISSIONS_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated'
+    )
+}
+
+DJOSER = {
+    'LOGIN_FIELD' : 'email',
+    'USER_CREATE_PASSWORD_RETYPE' : True,
+    'SERIALIZERS' : {
+        'user' : 'users.serializers.UserSerializer'
+    },
 }
 
 SIMPLE_JWT = {
