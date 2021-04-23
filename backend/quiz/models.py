@@ -46,7 +46,7 @@ class Question(Updated):
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     score = models.IntegerField(
         choices=SCALE, default=0, verbose_name=_("Points for the task"))
-    date_created = models.DateTimeField(
+    created = models.DateTimeField(
         auto_now_add=True, verbose_name=_("Date Created"))
     is_active = models.BooleanField(
         default=False, verbose_name=_("Active Status"))
@@ -79,9 +79,9 @@ class QuizResult(models.Model):
         Question, related_name='quizresult', on_delete=models.CASCADE)
     quiz = models.ForeignKey(
         Quiz, related_name='quizresult', on_delete=models.DO_NOTHING)
-    start_date = models.DateTimeField(
+    created = models.DateTimeField(
         verbose_name=_("Starting the Quiz"), auto_now=True)
-    finish_date = models.DateTimeField(verbose_name=_("Finish the Quiz")),
+    deadline = models.DateTimeField(verbose_name=_("Finish the Quiz")),
     right_answers = models.PositiveSmallIntegerField(
         null=False, default=0, verbose_name=_("Right answers"))
     wrong_answers = models.PositiveSmallIntegerField(
