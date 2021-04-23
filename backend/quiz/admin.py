@@ -2,11 +2,6 @@ from django.contrib import admin
 from quiz.models import Quiz, Question, Category, Answer
 
 
-# admin.site.register(Quiz)
-# admin.site.register(Question)
-# admin.site.register(Category)
-
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = [
@@ -35,13 +30,14 @@ class QuestionAdmin(admin.ModelAdmin):
     fields = [
         'quiz',
         'title',
-        'technique'
-        
+        'technique',
+        'score'
         ]
     list_display = [
         'title', 
         'quiz',
         'technique',
+        'score',
         'date_updated'
         ]
     inlines = [
