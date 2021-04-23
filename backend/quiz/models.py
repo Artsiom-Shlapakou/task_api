@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from quiz.choices import SCALE, TYPE
+from quiz.choices import TYPE, MULTIPLE_CHOICE
 from users.models import User
 
 
@@ -42,10 +42,10 @@ class Question(Updated):
     quiz = models.ForeignKey(
         Quiz, related_name='question', on_delete=models.DO_NOTHING)
     technique = models.IntegerField(
-        choices=TYPE, default=0, verbose_name=_("Type of Question"))
+        choices=TYPE, default=MULTIPLE_CHOICE, verbose_name=_("Type of Question"))
     title = models.CharField(max_length=255, verbose_name=_("Title"))
     score = models.IntegerField(
-        choices=SCALE, default=0, verbose_name=_("Points for the task"))
+        default=1, verbose_name=_("Points for the task"))
     created = models.DateTimeField(
         auto_now_add=True, verbose_name=_("Date Created"))
     is_active = models.BooleanField(
