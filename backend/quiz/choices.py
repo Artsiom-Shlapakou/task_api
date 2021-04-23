@@ -1,17 +1,14 @@
 from django.utils.translation import ugettext_lazy as _
 
 
-SCALE = (
-    (0, _('1')),
-    (1, _('2')),
-    (2, _('3')),
-    (3, _('4')),
-    (4, _('5'))
-)
+MULTIPLE_CHOICE = 0
+MULTIPLE_RESPONSE = 1
+TRUE_FALSE = 2
+SHORT_ANSWER = 3
 
 TYPE = (
-    (0, _('Multiple Choice')),
-    (1, _('Multiple Response')),
-    (2, _('True or False')),
-    (3, _('Short Answer'))
+    (MULTIPLE_CHOICE, _('Multiple Choice')),
+    (MULTIPLE_RESPONSE, _('Multiple Response')),
+    (TRUE_FALSE, _('True or False')),
+    (SHORT_ANSWER, _('Short Answer'))
  )
